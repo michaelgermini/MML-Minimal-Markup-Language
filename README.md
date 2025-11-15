@@ -440,10 +440,11 @@ SOFTWARE.
 - **Inclusion** : Communication accessible à tous
 
 ### 🚀 Futur
-- **Standardisation internationale** (ISO, IETF)
-- **Adoption gouvernementale** et ONG
-- **Écosystème IoT** spécialisé
-- **IA intégrée** pour l'assistance
+
+- **🔬 Standardisation internationale** ([ISO](standards/iso-submission/mml-iso-proposal.md), [IETF](standards/ietf-draft/mml-internet-draft.md))
+- **🏛️ Adoption gouvernementale et ONG** ([Stratégie d'adoption](standards/adoption-strategy/mml-adoption-strategy.md))
+- **🤖 Écosystème IoT spécialisé** ([MML-IoT](chapitres/chapitre11-ecosysteme-futur.md#114-écosystème-iot-spécialisé))
+- **🧠 IA intégrée pour l'assistance** ([IA embarquée](chapitres/chapitre11-ecosysteme-futur.md#115-compatibilité-avec-ia-embarquée))
 
 ---
 

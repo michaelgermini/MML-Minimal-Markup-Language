@@ -75,7 +75,47 @@ P:Stocks stratégiques activés
 P:Personnel médical mobilisé
 ```
 
-## 11.4 Compatibilité avec IA embarquée
+## 11.4 Écosystème IoT spécialisé
+
+### MML-IoT : Protocoles pour capteurs
+
+#### Architecture décentralisée
+- **Mailles auto-formantes** : Capteurs communiquent entre eux
+- **Batteries longue durée** : Transmission optimisée
+- **Résilience réseau** : Fonctionne malgré pertes de connexions
+
+#### Protocoles MML-IoT
+```
+# Capteur environnemental
+T:SONDE-ENV-001
+M:TYPE|MULTI-CAPTEUR
+M:BATTERIE|87%
+M:COORD|45.23N,2.45E
+
+H:LECTURES TEMPS RÉEL
+M:TEMPERATURE|23.4°C
+M:HUMIDITE|65%
+M:POLLUTION|42ug/m3
+M:TIMESTAMP|1640995200
+
+H:ALERTES
+P:Niveau pollution élevé
+```
+
+#### Cas d'usage IoT
+- **🌱 Agriculture** : Suivi cultures, irrigation intelligente
+- **🏭 Industrie** : Maintenance prédictive, sécurité
+- **🏙️ Smart Cities** : Qualité air, trafic, éclairage
+- **🏥 Santé** : Monitoring patients, équipements médicaux
+- **🌊 Environnement** : Détection catastrophes, suivi biodiversité
+
+#### Avantages MML-IoT
+- **⚡ Faible consommation** : Transmission compacte
+- **🔄 Auto-réparation** : Réseau s'adapte aux pannes
+- **🌐 Universel** : Compatible tous protocoles (LoRa, NB-IoT, Sigfox)
+- **📊 Données structurées** : Métadonnées riches pour analytics
+
+## 11.5 Compatibilité avec IA embarquée
 
 ### IA comme assistant MML
 
