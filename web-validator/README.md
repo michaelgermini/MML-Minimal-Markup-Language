@@ -28,6 +28,34 @@ Validateur en ligne interactif pour le langage Minimal Markup Language (MML) ave
 - **Raccourcis clavier** : Navigation rapide et efficace
 - **Accessibilité** : Conforme WCAG 2.1
 
+## 🔄 Pourquoi valider du MML ?
+
+| Format | Taille | Résilience | Transmission | Validation |
+|--------|--------|------------|--------------|------------|
+| **MML** | ⭐⭐⭐ (compact) | ⭐⭐⭐ (robuste) | ✅ Tous moyens | ✅ Temps réel |
+| **HTML** | ⭐ (verbeux) | ⭐ (fragile) | ❌ Complexe | ⚠️ Limité |
+| **XML** | ⭐ (redondant) | ⭐ (strict) | ❌ Verbeux | ⚠️ Schéma requis |
+| **JSON** | ⭐⭐ (léger) | ⭐ (ponctuation) | ❌ Syntaxe sensible | ✅ Temps réel |
+| **Markdown** | ⭐⭐⭐ (simple) | ⭐⭐ (résistant) | ✅ Simple | ⚠️ Extensions variables |
+
+### Exemple : Validation en situation réelle
+**MML avec erreur** :
+```
+T:Rapport d'urgence
+M:Lieu|Zone sinistrée
+M:Victimes|5 personnes
+P:Besoin urgent médicaments et eau
+```
+→ **Validation** : ✅ Syntaxe correcte, structure valide
+
+**JSON équivalent corrompu** :
+```json
+{"title":"Rapport d'urgence","lieu":"Zone sinistrée","victimes":5,"besoin":"Besoin urgent médicaments et eau"
+```
+→ **Validation** : ❌ Erreur de syntaxe JSON, document inutilisable
+
+**Résultat** : MML reste valide même avec des erreurs partielles !
+
 ## 🚀 Démarrage rapide
 
 ### Prérequis

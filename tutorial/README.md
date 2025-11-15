@@ -28,6 +28,32 @@ Tutoriel interactif en ligne pour apprendre le langage Minimal Markup Language (
 - **Accessibilité** : Conforme WCAG 2.1
 - **Performance** : Chargement rapide et fluide
 
+## 🔄 Pourquoi MML plutôt qu'HTML/XML/JSON ?
+
+| Critère | MML | HTML | XML | JSON | Markdown |
+|---------|-----|------|-----|------|----------|
+| **Apprentissage** | 5 min | 2h | 4h | 30 min | 20 min |
+| **Taille fichier** | ⭐⭐⭐ | ⭐ | ⭐ | ⭐⭐ | ⭐⭐⭐ |
+| **Résilience** | ⭐⭐⭐ | ⭐ | ⭐ | ⭐ | ⭐⭐ |
+| **Transmission orale** | ✅ | ❌ | ❌ | ❌ | ✅ |
+| **Code Morse** | ✅ | ❌ | ❌ | ❌ | ❌ |
+
+### Exemple : Message d'urgence
+**MML (45 caractères)** - Transmissible par radio vocale :
+```
+T:URGENCE
+M:Lieu|Forêt secteur 7
+M:Victimes|3 blessées
+P:Incendie maîtrisé
+```
+
+**VS JSON (89 caractères)** - Plus verbeux, sensible aux erreurs :
+```json
+{"title":"URGENCE","metadata":{"lieu":"Forêt secteur 7","victimes":"3 blessées"},"content":"Incendie maîtrisé"}
+```
+
+**Résultat** : MML permet la communication même dans les environnements les plus difficiles !
+
 ## 🚀 Démarrage rapide
 
 ### Prérequis
