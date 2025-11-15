@@ -1,0 +1,140 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "MML",
+  "scopeName": "source.mml",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#tags"
+    },
+    {
+      "include": "#content"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.mml",
+          "match": "^\\s*#.*$"
+        }
+      ]
+    },
+    "tags": {
+      "patterns": [
+        {
+          "name": "keyword.control.mml",
+          "match": "^\\s*(T|H|P|M|L|IMG|C|Q|CFG|PKT):",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag.mml"
+            }
+          }
+        },
+        {
+          "name": "keyword.control.mml.compressed",
+          "match": "^\\s*([0-9]|10):",
+          "captures": {
+            "1": {
+              "name": "entity.name.tag.mml.compressed"
+            }
+          }
+        }
+      ]
+    },
+    "content": {
+      "patterns": [
+        {
+          "name": "string.unquoted.mml",
+          "match": "^\\s*[A-Z0-9]+:\\s*(.+)$",
+          "captures": {
+            "1": {
+              "patterns": [
+                {
+                  "include": "#metadata"
+                },
+                {
+                  "include": "#links"
+                },
+                {
+                  "include": "#code"
+                },
+                {
+                  "include": "#text"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "metadata": {
+      "patterns": [
+        {
+          "name": "meta.metadata.mml",
+          "match": "([A-Za-zÀ-ÿ0-9_\\-]+)\\s*\\|\\s*(.+)",
+          "captures": {
+            "1": {
+              "name": "variable.parameter.mml"
+            },
+            "2": {
+              "name": "string.quoted.mml"
+            }
+          }
+        }
+      ]
+    },
+    "links": {
+      "patterns": [
+        {
+          "name": "markup.underline.link.mml",
+          "match": "(.+?)\\s*\\|\\s*(https?://[^\\s]+)",
+          "captures": {
+            "1": {
+              "name": "string.other.link.title.mml"
+            },
+            "2": {
+              "name": "markup.underline.link.mml"
+            }
+          }
+        }
+      ]
+    },
+    "code": {
+      "patterns": [
+        {
+          "name": "markup.raw.block.mml",
+          "begin": "^\\s*C:",
+          "end": "^\\s*(?!\\s)",
+          "contentName": "source.embedded",
+          "patterns": [
+            {
+              "include": "source.js"
+            },
+            {
+              "include": "source.python"
+            },
+            {
+              "include": "source.shell"
+            }
+          ]
+        }
+      ]
+    },
+    "text": {
+      "patterns": [
+        {
+          "name": "string.unquoted.mml",
+          "match": "[^|\\n]+",
+          "captures": {
+            "0": {
+              "name": "text.mml"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

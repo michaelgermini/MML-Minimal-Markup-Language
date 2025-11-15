@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MML Validator - Validateur en ligne du langage MML</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>🔍 MML Validator</h1>
+            <p class="subtitle">Validateur en ligne du langage Minimal Markup Language (MML)</p>
+            <div class="version">Version 1.0</div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="description">
+            <h2>À propos du validateur</h2>
+            <p>
+                Cet outil vous permet de tester et valider des documents MML en temps réel.
+                Saisissez votre contenu MML dans l'éditeur ci-dessous et voyez instantanément
+                les résultats du parsing, les erreurs éventuelles et les différentes représentations.
+            </p>
+            <div class="features">
+                <div class="feature">
+                    <span class="emoji">⚡</span>
+                    <strong>Validation temps réel</strong>
+                    <p>Détection instantanée des erreurs de syntaxe</p>
+                </div>
+                <div class="feature">
+                    <span class="emoji">🔄</span>
+                    <strong>Conversions multiples</strong>
+                    <p>HTML, JSON, texte brut et MMLC</p>
+                </div>
+                <div class="feature">
+                    <span class="emoji">📊</span>
+                    <strong>Statistiques détaillées</strong>
+                    <p>Métriques de parsing et performance</p>
+                </div>
+                <div class="feature">
+                    <span class="emoji">🎯</span>
+                    <strong>Exemples intégrés</strong>
+                    <p>Templates prêts à l'emploi</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="validator-section">
+            <div class="input-panel">
+                <div class="panel-header">
+                    <h3>📝 Éditeur MML</h3>
+                    <div class="controls">
+                        <button id="clearBtn" class="btn-secondary">🗑️ Effacer</button>
+                        <button id="examplesBtn" class="btn-secondary">📋 Exemples</button>
+                        <button id="formatBtn" class="btn-secondary">🎨 Formater</button>
+                    </div>
+                </div>
+                <textarea id="mmlInput" placeholder="Saisissez votre document MML ici...
+
+Exemple rapide :
+T:Mon document
+H:Introduction
+P:Ceci est un paragraphe simple.
+M:Auteur|Votre nom
+L:Documentation|https://example.com"></textarea>
+                <div class="input-info">
+                    <span id="charCount">0 caractères</span>
+                    <span id="lineCount">0 lignes</span>
+                </div>
+            </div>
+
+            <div class="output-panel">
+                <div class="panel-tabs">
+                    <button class="tab-btn active" data-tab="validation">✅ Validation</button>
+                    <button class="tab-btn" data-tab="html">🌐 HTML</button>
+                    <button class="tab-btn" data-tab="json">📋 JSON</button>
+                    <button class="tab-btn" data-tab="text">📄 Texte</button>
+                    <button class="tab-btn" data-tab="mmlc">🗜️ MMLC</button>
+                    <button class="tab-btn" data-tab="stats">📊 Stats</button>
+                </div>
+
+                <div id="validationTab" class="tab-content active">
+                    <div id="validationResult" class="result-area">
+                        <div class="status pending">
+                            <span class="emoji">⏳</span>
+                            En attente de saisie...
+                        </div>
+                    </div>
+                </div>
+
+                <div id="htmlTab" class="tab-content">
+                    <div id="htmlResult" class="result-area">
+                        <div class="preview-notice">
+                            <strong>Aperçu HTML généré</strong><br>
+                            Le contenu ci-dessous est le résultat de la conversion MML → HTML.
+                        </div>
+                        <div id="htmlPreview"></div>
+                    </div>
+                </div>
+
+                <div id="jsonTab" class="tab-content">
+                    <pre id="jsonResult" class="result-area code-block"></pre>
+                </div>
+
+                <div id="textTab" class="tab-content">
+                    <pre id="textResult" class="result-area code-block"></pre>
+                </div>
+
+                <div id="mmlcTab" class="tab-content">
+                    <div id="mmlcResult" class="result-area">
+                        <div class="compression-info">
+                            <div id="compressionStats"></div>
+                        </div>
+                        <pre id="mmlcContent" class="code-block"></pre>
+                    </div>
+                </div>
+
+                <div id="statsTab" class="tab-content">
+                    <div id="statsResult" class="result-area">
+                        <div class="stats-grid" id="statsGrid"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Examples Modal -->
+        <div id="examplesModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📋 Exemples MML</h3>
+                    <button class="close-btn" id="closeExamples">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="examples-grid">
+                        <div class="example-card" data-example="basic">
+                            <h4>📄 Document basique</h4>
+                            <p>Structure simple avec titre et sections</p>
+                        </div>
+                        <div class="example-card" data-example="metadata">
+                            <h4>🔖 Métadonnées</h4>
+                            <p>Document avec métadonnées complètes</p>
+                        </div>
+                        <div class="example-card" data-example="links">
+                            <h4>🔗 Liens et médias</h4>
+                            <p>Liens, images et références externes</p>
+                        </div>
+                        <div class="example-card" data-example="emergency">
+                            <h4>🚨 Rapport d'urgence</h4>
+                            <p>Format pour situations d'urgence</p>
+                        </div>
+                        <div class="example-card" data-example="medical">
+                            <h4>🏥 Rapport médical</h4>
+                            <p>Structure pour données médicales</p>
+                        </div>
+                        <div class="example-card" data-example="technical">
+                            <h4>⚙️ Documentation technique</h4>
+                            <p>Manuel technique et spécifications</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error Modal -->
+        <div id="errorModal" class="modal">
+            <div class="modal-content error-modal">
+                <div class="modal-header">
+                    <h3>❌ Erreur de parsing</h3>
+                    <button class="close-btn" id="closeError">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div id="errorContent"></div>
+                    <div class="error-actions">
+                        <button id="errorHelpBtn" class="btn-primary">📖 Aide</button>
+                        <button id="errorRetryBtn" class="btn-secondary">🔄 Réessayer</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Modal -->
+        <div id="helpModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>📖 Aide MML</h3>
+                    <button class="close-btn" id="closeHelp">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="help-content">
+                        <h4>Syntaxe de base</h4>
+                        <pre><code>T:Titre du document
+H:Titre de section
+P:Contenu du paragraphe
+M:clé|valeur
+L:texte|url</code></pre>
+
+                        <h4>Balises disponibles</h4>
+                        <ul>
+                            <li><code>T:</code> Titre du document</li>
+                            <li><code>H:</code> Section/en-tête</li>
+                            <li><code>P:</code> Paragraphe</li>
+                            <li><code>M:</code> Métadonnées (clé|valeur)</li>
+                            <li><code>L:</code> Lien (texte|URL)</li>
+                            <li><code>IMG:</code> Image (desc|URL)</li>
+                            <li><code>C:</code> Bloc de code</li>
+                            <li><code>Q:</code> Citation</li>
+                        </ul>
+
+                        <h4>Exemples courants</h4>
+                        <ul>
+                            <li>Rapports d'urgence</li>
+                            <li>Documentation technique</li>
+                            <li>Données médicales</li>
+                            <li>Communication radio</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>
+                MML Validator v1.0 - Outil officiel pour le langage Minimal Markup Language<br>
+                <a href="https://github.com/mml-lang/mml" target="_blank">📖 Documentation</a> |
+                <a href="https://github.com/mml-lang/mml/issues" target="_blank">🐛 Signaler un bug</a> |
+                <a href="https://mml-lang.org" target="_blank">🌐 Site officiel</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Load MML Parser -->
+    <script src="../implementations/mml-parser.js"></script>
+    <script src="validator.js"></script>
+</body>
+</html>

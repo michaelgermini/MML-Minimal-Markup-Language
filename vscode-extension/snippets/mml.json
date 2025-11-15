@@ -1,0 +1,201 @@
+{
+  "Document MML": {
+    "prefix": "mmldoc",
+    "body": [
+      "T:${1:Titre du document}",
+      "M:Auteur|${2:Auteur}",
+      "M:Version|${3:1.0}",
+      "M:Date|${4:${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}}",
+      "",
+      "H:${5:Introduction}",
+      "P:${6:Contenu de l'introduction}",
+      "",
+      "H:${7:Section principale}",
+      "P:${8:Contenu de la section}",
+      "",
+      "${9}"
+    ],
+    "description": "Structure de base d'un document MML complet"
+  },
+
+  "Titre": {
+    "prefix": "title",
+    "body": "T:${1:Titre du document}",
+    "description": "Balise de titre"
+  },
+
+  "Section": {
+    "prefix": "section",
+    "body": "H:${1:Titre de la section}",
+    "description": "Balise de section"
+  },
+
+  "Paragraphe": {
+    "prefix": "para",
+    "body": "P:${1:Contenu du paragraphe}",
+    "description": "Balise de paragraphe"
+  },
+
+  "Métadonnées": {
+    "prefix": "meta",
+    "body": "M:${1:Clé}|${2:Valeur}",
+    "description": "Balise de métadonnées"
+  },
+
+  "Lien": {
+    "prefix": "link",
+    "body": "L:${1:Texte du lien}|${2:http://example.com}",
+    "description": "Balise de lien"
+  },
+
+  "Image": {
+    "prefix": "img",
+    "body": "IMG:${1:Description}|${2:image.png}",
+    "description": "Balise d'image"
+  },
+
+  "Citation": {
+    "prefix": "quote",
+    "body": "Q:${1:Texte de la citation}",
+    "description": "Balise de citation"
+  },
+
+  "Bloc de code": {
+    "prefix": "code",
+    "body": [
+      "C:${1:Code source}",
+      "${2}"
+    ],
+    "description": "Balise de bloc de code"
+  },
+
+  "Configuration": {
+    "prefix": "config",
+    "body": [
+      "CFG:${1:Section de configuration}",
+      "M:${2:Paramètre}|${3:Valeur}",
+      "${4}"
+    ],
+    "description": "Bloc de configuration"
+  },
+
+  "Rapport d'urgence": {
+    "prefix": "urgence",
+    "body": [
+      "T:RAPPORT URGENCE - ${1:TYPE D'INCIDENT}",
+      "M:ID|${2:INC-2025-XXX}",
+      "M:DATE|${3:${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}T${CURRENT_HOUR}:${CURRENT_MINUTE}:00Z}",
+      "M:EMETTEUR|${4:Votre nom}",
+      "M:GRAVITE|${5|CRITIQUE,HAUTE,MOYENNE,BASSE|}",
+      "M:LOCALISATION|${6:Localisation}",
+      "",
+      "H:SITUATION ACTUELLE",
+      "P:${7:Description de la situation}",
+      "",
+      "H:MOYENS ENGAGES",
+      "P:${8:Moyens déployés}",
+      "",
+      "H:ACTIONS REQUISES",
+      "P:${9:Actions immédiates}",
+      "",
+      "Q:URGENT : ${10:Message prioritaire}",
+      "",
+      "L:Carte secteur|${11:carte-secteur.png}",
+      "M:COORD|${12:latitude,longitude}"
+    ],
+    "description": "Template pour rapport d'urgence"
+  },
+
+  "Rapport médical": {
+    "prefix": "medical",
+    "body": [
+      "T:RAPPORT MEDICAL",
+      "M:Patient|${1:Nom du patient}",
+      "M:ID|${2:PAT-2025-XXX}",
+      "M:Medecin|${3:Dr. Nom}",
+      "M:Service|${4:Service}",
+      "",
+      "H:IDENTIFICATION",
+      "M:Age|${5:âge}",
+      "M:Sexe|${6|Homme,Femme|}",
+      "M:Etat|${7|Stable,Critique,Grave|}",
+      "",
+      "H:SYMPTOMES",
+      "P:${8:Description des symptômes}",
+      "",
+      "H:DIAGNOSTIC",
+      "M:Diagnostic|${9:Diagnostic principal}",
+      "M:Gravite|${10|1-Léger,2-Modéré,3-Grave,4-Critique|}",
+      "",
+      "H:TRAITEMENT",
+      "P:${11:Traitement prescrit}",
+      "M:Medicaments|${12:Médicaments}",
+      "",
+      "H:EVOLUTION",
+      "P:${13:Pronostic et évolution attendue}",
+      "",
+      "Q:Protocole standard : ${14:protocole applicable}"
+    ],
+    "description": "Template pour rapport médical"
+  },
+
+  "Documentation technique": {
+    "prefix": "techdoc",
+    "body": [
+      "T:${1:Titre de la documentation}",
+      "M:Produit|${2:Nom du produit}",
+      "M:Version|${3:1.0.0}",
+      "M:Auteur|${4:Auteur}",
+      "M:Derniere revision|${5:${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}}",
+      "",
+      "H:Vue d'ensemble",
+      "P:${6:Description générale du produit/fonctionnalité}",
+      "",
+      "H:Installation",
+      "P:${7:Prérequis système}",
+      "P:${8:Procédure d'installation}",
+      "",
+      "C:# Exemple d'installation",
+      "C:sudo apt-get install ${9:nom-du-paquet}",
+      "",
+      "H:Configuration",
+      "CFG:Paramètres principaux",
+      "M:${10:paramètre}|${11:valeur}",
+      "M:${12:paramètre}|${13:valeur}",
+      "",
+      "H:Utilisation",
+      "P:${14:Mode d'emploi principal}",
+      "",
+      "C:# Exemple d'utilisation",
+      "C:${15:commande exemple}",
+      "",
+      "H:Dépannage",
+      "P:${16:Problèmes courants et solutions}",
+      "",
+      "L:Documentation complète|${17:https://docs.example.com}",
+      "IMG:Diagramme architecture|${18:architecture.png}"
+    ],
+    "description": "Template pour documentation technique"
+  },
+
+  "Commentaire": {
+    "prefix": "comment",
+    "body": "# ${1:Commentaire}",
+    "description": "Ligne de commentaire"
+  },
+
+  "MMLC mapping": {
+    "prefix": "mmlc",
+    "body": [
+      "# Mapping MML → MMLC",
+      "# T → 1, H → 2, M → 3, P → 4",
+      "# L → 5, IMG → 6, C → 7, Q → 8",
+      "",
+      "1:${1:Titre}",
+      "2:${2:Section}",
+      "3:${3:Méta}|${4:Valeur}",
+      "4:${5:Paragraphe}"
+    ],
+    "description": "Rappels des mappings MMLC"
+  }
+}

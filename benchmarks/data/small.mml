@@ -1,0 +1,15 @@
+T:Petit document de test
+M:Auteur|Test
+M:Version|1.0
+
+H:Introduction
+P:Ceci est un petit document de test pour les benchmarks de performance.
+P:Il contient quelques paragraphes et métadonnées de base.
+
+H:Contenu
+P:Section avec du contenu simple.
+P:Quelques lignes supplémentaires pour tester le parsing.
+
+H:Conclusion
+P:Fin du document de test.
+Q:Test terminé avec succès

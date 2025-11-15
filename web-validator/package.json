@@ -1,0 +1,30 @@
+{
+  "name": "mml-web-validator",
+  "version": "1.0.0",
+  "description": "Web-based validator for the Minimal Markup Language (MML)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "serve": "node server.js --port 3000",
+    "build": "echo 'No build step required'",
+    "test": "echo 'Run tests in parent directory'"
+  },
+  "keywords": ["mml", "validator", "web", "markup", "language"],
+  "author": "MML Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mml-lang/mml.git",
+    "directory": "web-validator"
+  },
+  "homepage": "https://validator.mml-lang.org",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "bin": {
+    "mml-validator-server": "./server.js"
+  }
+}

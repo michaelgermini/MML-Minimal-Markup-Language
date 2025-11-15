@@ -1,0 +1,29 @@
+{
+  "name": "mml-lang",
+  "version": "1.0.0",
+  "description": "Minimal Markup Language - Parser and Tools",
+  "main": "implementations/mml-parser.js",
+  "bin": {
+    "mml-cli": "./bin/mml-cli.js"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "cli": "node bin/mml-cli.js"
+  },
+  "keywords": ["mml", "markup", "parser", "minimal", "resilient"],
+  "author": "MML Team",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mml-lang/mml.git"
+  },
+  "homepage": "https://mml-lang.org",
+  "bugs": {
+    "url": "https://github.com/mml-lang/mml/issues"
+  }
+}

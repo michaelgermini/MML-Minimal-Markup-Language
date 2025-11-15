@@ -1,0 +1,91 @@
+T:Rapport d'analyse de performance - Document moyen
+M:Auteur|Équipe Performance MML
+M:Version|2.1.0
+M:Date|2025-01-15
+M:Classification|Interne
+M:Tags|performance,test,benchmark,analysis
+
+H:Vue d'ensemble
+P:Ce document constitue un test de performance pour les parsers MML.
+P:Il contient une quantité représentative de contenu réel avec métadonnées,
+P:sections multiples, liens, images et blocs de code.
+M:Taille|Environ 2KB
+M:Lignes|~80 lignes
+M:Sections|8 sections principales
+
+H:Architecture système
+P:L'architecture MML est conçue pour être simple et efficace.
+P:Chaque ligne est indépendante et peut être parsée individuellement.
+P:Cela permet une parallélisation naturelle du traitement.
+M:Complexité|O(n) où n = nombre de lignes
+M:Optimisations|Zero-copy, allocation minimale
+
+H:Métriques de performance
+P:Les métriques clés pour évaluer les parsers MML incluent :
+P:- Temps de parsing pur
+P:- Utilisation mémoire
+P:- Taux de compression
+P:- Robustesse aux erreurs
+M:Métriques|Temps,Mémoire,Compression,Robustesse
+M:Unités|ms,KB,%,score
+
+H:Implémentations disponibles
+P:Actuellement, MML est implémenté dans plusieurs langages :
+P:- JavaScript (navigateur et Node.js)
+P:- Python (CPython et alternatives)
+P:- Rust (haute performance)
+P:- Go (services web)
+P:- C/C++ (systèmes embarqués)
+M:Langages|5 implémentations principales
+M:Status|Toutes opérationnelles
+
+H:Comparaison des performances
+P:Chaque implémentation a ses forces :
+P:- Rust : Performance maximale, sécurité mémoire
+P:- C/C++ : Efficacité embarquée, ressources minimales
+P:- Go : Équilibre perf/productivité, services web
+P:- JavaScript : Universalité, écosystème riche
+P:- Python : Facilité d'utilisation, prototypage rapide
+M:Recommandations|Rust:perf,C++:embarqué,Go:services,JS:web,Python:prototypage
+
+H:Cas d'usage par implémentation
+P:Les choix d'implémentation dépendent du contexte :
+P:- Applications web : JavaScript ou Go
+P:- Systèmes embarqués : C/C++ ou Rust
+P:- Outils CLI : Rust ou Go
+P:- Prototypage : Python
+P:- Haute performance : Rust
+M:Contextes|Web,Embarqué,CLI,Prototypage,Performance
+
+H:Tests de charge
+P:Les tests de charge évaluent :
+P:- Parsing de documents volumineux (100KB+)
+P:- Traitement de milliers de documents
+P:- Comportement en mémoire limitée
+P:- Récupération après erreurs
+M:Tests|Volume,Concurrence,Mémoire,Robustesse
+M:Seuil|100KB,1000 docs,10MB,99% success
+
+H:Optimisations futures
+P:Axes d'amélioration identifiés :
+P:- Parsing SIMD pour les gros volumes
+P:- Cache intelligent des documents fréquents
+P:- Compilation JIT pour expressions complexes
+P:- Optimisations mémoire par pooling
+M:Priorités|SIMD,Cache,JIT,Pooling
+M:Impact|Haut,Moyen,Moyen,Haut
+
+H:Conclusion
+P:Les benchmarks de performance démontrent que MML offre
+P:d'excellentes performances dans tous les environnements.
+P:Le choix d'implémentation dépend des contraintes spécifiques
+P:du projet, mais toutes offrent de bons résultats.
+Q:La simplicité de MML ne sacrifie pas les performances
+L:Documentation complète|https://docs.mml-lang.org
+L:Code source|https://github.com/mml-lang/mml
+IMG:Graphiques performance|benchmarks/charts/performance-2025.png
+C:# Exemple de mesure de performance
+C:let start = performance.now();
+C:let doc = parser.parse(mmlContent);
+C:let end = performance.now();
+C:console.log(`Parsing: ${end - start}ms`);

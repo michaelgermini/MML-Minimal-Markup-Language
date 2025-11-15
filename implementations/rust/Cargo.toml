@@ -1,0 +1,52 @@
+[package]
+name = "mml-parser"
+version = "1.0.0"
+edition = "2021"
+description = "High-performance MML (Minimal Markup Language) parser in Rust"
+license = "MIT"
+keywords = ["mml", "parser", "markup", "performance", "serde"]
+categories = ["parsing", "text-processing"]
+repository = "https://github.com/mml-lang/mml-rust"
+homepage = "https://mml-lang.org"
+documentation = "https://docs.rs/mml-parser"
+readme = "README.md"
+
+[lib]
+name = "mml_parser"
+path = "src/lib.rs"
+
+[[bin]]
+name = "mml-cli"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "1.0"
+nom = { version = "7.1", optional = true }
+regex = "1.10"
+lazy_static = "1.4"
+
+[dev-dependencies]
+criterion = "0.5"
+serde_yaml = "0.9"
+
+[features]
+default = ["nom-parser"]
+nom-parser = ["nom"]
+regex-parser = []
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = true
+overflow-checks = true
+
+[[bench]]
+name = "parsing_benchmark"
+harness = false

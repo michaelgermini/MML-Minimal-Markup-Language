@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MML Tutorial - Apprendre le langage MML interactivement</title>
+    <link rel="stylesheet" href="tutorial.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>📚 Tutoriel Interactif MML</h1>
+            <p class="subtitle">Apprenez le langage Minimal Markup Language pas à pas avec des exercices pratiques</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+                <span class="progress-text" id="progressText">Leçon 1 sur 8</span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="lesson-nav">
+        <div class="container">
+            <button class="nav-btn" id="prevBtn" disabled>← Précédent</button>
+            <div class="lesson-dots" id="lessonDots">
+                <!-- Les points de leçon seront générés par JavaScript -->
+            </div>
+            <button class="nav-btn" id="nextBtn">Suivant →</button>
+        </div>
+    </nav>
+
+    <section class="tutorial-intro">
+        <div class="container">
+            <div class="intro-content">
+                <h2>🚀 Votre voyage vers la maîtrise de MML</h2>
+                <p class="intro-text">
+                    Découvrez le langage Minimal Markup Language (MML), conçu pour les environnements contraints où chaque octet compte.
+                    Ce tutoriel interactif vous guide à travers 8 leçons progressives, des concepts fondamentaux à l'expertise avancée.
+                </p>
+                <div class="intro-stats">
+                    <div class="stat">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Leçons</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">14</span>
+                        <span class="stat-label">Badges</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label">Applications</span>
+                    </div>
+                </div>
+                <div class="intro-features">
+                    <div class="feature">
+                        <span class="feature-icon">🎯</span>
+                        <span class="feature-text">Validation temps réel</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">💻</span>
+                        <span class="feature-text">Exercices pratiques</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🏆</span>
+                        <span class="feature-text">Système de récompenses</span>
+                    </div>
+                    <div class="feature">
+                        <span class="feature-icon">🌍</span>
+                        <span class="feature-text">Cas d'usage mondiaux</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="tutorial-content">
+            <!-- Le contenu des leçons sera généré par JavaScript -->
+            <div id="lessonContent"></div>
+        </div>
+
+        <aside class="tutorial-sidebar">
+            <div class="sidebar-section">
+                <h3>🎯 Objectifs</h3>
+                <ul id="lessonObjectives"></ul>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>📋 Référence rapide</h3>
+                <div id="quickReference"></div>
+            </div>
+
+            <div class="sidebar-section">
+                <h3>🏆 Progrès</h3>
+                <div class="achievement-list" id="achievements"></div>
+                <div class="debug-section">
+                    <h4>🔧 Debug</h4>
+                    <button onclick="runDebugTest()" style="margin-top: 10px; padding: 8px 12px; background: #ff6b6b; color: white; border: none; border-radius: 4px; cursor: pointer;">Tester Debug</button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <!-- Modal pour les exercices -->
+    <div id="exerciseModal" class="modal">
+        <div class="modal-content exercise-modal">
+            <div class="modal-header">
+                <h3 id="exerciseTitle">Exercice pratique</h3>
+                <button class="close-btn" id="closeExercise">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="exercise-instruction" id="exerciseInstruction"></div>
+
+                <div class="exercise-editor">
+                    <label for="exerciseInput">Votre solution MML :</label>
+                    <textarea id="exerciseInput" placeholder="Saisissez votre code MML ici..."></textarea>
+                    <div class="exercise-actions">
+                        <button id="checkExerciseBtn" class="btn-primary">✅ Vérifier</button>
+                        <button id="showHintBtn" class="btn-secondary">💡 Indice</button>
+                        <button id="showSolutionBtn" class="btn-secondary">👀 Solution</button>
+                    </div>
+                </div>
+
+                <div class="exercise-feedback" id="exerciseFeedback"></div>
+
+                <div class="exercise-result" id="exerciseResult">
+                    <div class="result-tabs">
+                        <button class="result-tab active" data-result="validation">Validation</button>
+                        <button class="result-tab" data-result="html">HTML</button>
+                        <button class="result-tab" data-result="json">JSON</button>
+                    </div>
+                    <div class="result-content">
+                        <div id="validationResult" class="result-pane active"></div>
+                        <div id="htmlResult" class="result-pane"></div>
+                        <div id="jsonResult" class="result-pane"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour les succès -->
+    <div id="successModal" class="modal">
+        <div class="modal-content success-modal">
+            <div class="modal-body">
+                <div class="success-icon">🎉</div>
+                <h3>Félicitations !</h3>
+                <p id="successMessage">Vous avez terminé cette leçon avec succès !</p>
+                <button id="continueBtn" class="btn-primary">Continuer →</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>
+                MML Tutorial - Outil pédagogique officiel du langage Minimal Markup Language<br>
+                <a href="../README.md" target="_blank">📖 Documentation</a> |
+                <a href="../web-validator/" target="_blank">🔍 Validateur</a> |
+                <a href="https://github.com/mml-lang/mml" target="_blank">💻 Code source</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Load MML Parser -->
+    <script src="../implementations/mml-parser.js"></script>
+    <script src="lessons.js"></script>
+    <script src="tutorial.js"></script>
+    <!-- Debug script (remove in production) -->
+    <script src="test-debug.js"></script>
+</body>
+</html>
